@@ -87,3 +87,9 @@ class Service(db.Model):
     id = db.Column(db.String(50), primary_key=True, default= generate_uuid())
     name = db.Column(db.String(100))
     prices = db.Column(db.String(100))
+
+class TokenBlocklist(db.Model):
+    __tablename__ = 'tokenblocklist'
+    id = db.Column(db.Integer, primary_key=True)
+    jti = db.Column(db.String(36), nullable=False, index=True)
+    created_at = db.Column(db.DateTime, nullable=False)
