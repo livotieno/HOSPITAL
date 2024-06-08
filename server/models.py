@@ -25,4 +25,65 @@ class Doctor(db.Model):
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(40))
     department_id = db.Column(db.String(40), db.ForeignKey('department.id'))
+    specialization = db.Column(db.String(40))
     profile_photo = db.Column(db.String(40))
+
+
+class Cleaner(db.Model):
+    __tablename__ = 'cleaners'
+
+    id = db.Column(db.String(50), primary_key=True, default= generate_uuid())
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(40))
+    department_id = db.Column(db.String(40), db.ForeignKey('department.id'))
+    profile_photo = db.Column(db.String(40))
+
+class Guard(db.Model):
+    __tablename__ = 'guards'
+
+    id = db.Column(db.String(50), primary_key=True, default= generate_uuid())
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(40))
+    department_id = db.Column(db.String(40), db.ForeignKey('department.id'))
+    profile_photo = db.Column(db.String(40))
+
+class Cook(db.Model):
+    __tablename__ = 'cooks'
+
+    id = db.Column(db.String(50), primary_key=True, default= generate_uuid())
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(40))
+    department_id = db.Column(db.String(40), db.ForeignKey('department.id'))
+    profile_photo = db.Column(db.String(40))
+
+class Receptionist(db.Model):
+    __tablename__ = 'receptionists'
+
+    id = db.Column(db.String(50), primary_key=True, default= generate_uuid())
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(40))
+    department_id = db.Column(db.String(40), db.ForeignKey('department.id'))
+    profile_photo = db.Column(db.String(40))
+
+class Admin(db.Model):
+    __tablename__ = 'admin'
+
+    id = db.Column(db.String(36), db.ForeignKey('users.id'), primary_key=True)
+    name = db.Column(db.String(50))
+    email = db.Column(db.String(100))
+    password = db.Column(db.String(50))
+
+
+class Department(db.Model):
+
+    __tablename__ = 'departments'
+
+    id = db.Column(db.String(36), primary_key=True, default=generate_uuid())
+    name = db.Column(db.String(100))
+
+class Service(db.Model):
+    __tablename__ = 'services'
+
+    id = db.Column(db.String(50), primary_key=True, default= generate_uuid())
+    name = db.Column(db.String(100))
+    prices = db.Column(db.String(100))
